@@ -23,4 +23,4 @@ build-backend = "setuptools.build_meta"
 packages = ["polynomial_tutorial"]
 
 [project.scripts]
-ddpm-tutorial = "polynomial_tutorial.main:main"
+polynomial_tutorial = "polynomial_tutorial.main:main"

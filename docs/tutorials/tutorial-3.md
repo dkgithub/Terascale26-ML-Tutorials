@@ -1,19 +1,19 @@
-# Tutorial 3: Advanced Topics
+# Tutorial 5: Real-World Applications
 
 **Status:** Coming Soon
 
-Dive deeper into advanced generative modeling techniques.
+Apply generative models to real-world problems and datasets.
 
 ---
 
 ## Planned Topics
 
-This tutorial will cover:
+This tutorial will cover practical applications:
 
-- **Conditional Generation**: Generate data with specific properties
-- **Classifier-Free Guidance**: Control generation without extra classifiers  
-- **Latent Diffusion**: Work in compressed latent spaces
-- **Advanced Sampling**: DDIM, DPM-Solver, and more
+- **Image Generation**: MNIST, CIFAR-10, CelebA
+- **Audio Synthesis**: Waveform generation, music
+- **Molecular Design**: Drug discovery applications
+- **Time Series**: Financial data, sensor data
 
 ---
 
@@ -21,78 +21,82 @@ This tutorial will cover:
 
 After completing this tutorial, you will be able to:
 
-- Generate data conditioned on labels or attributes
-- Implement and use classifier-free guidance
-- Build latent diffusion models
-- Use advanced sampling techniques for faster generation
-- Apply these techniques to real-world datasets
+- Scale diffusion models to real image datasets
+- Apply flow matching to audio generation
+- Use generative models for molecular design
+- Handle high-dimensional real-world data
+- Deploy models for practical use
 
 ---
 
 ## Prerequisites
 
-Before starting Tutorial 3, you should:
+Before starting Tutorial 5, you should:
 
 - Complete [Tutorial 1: DDPM](tutorial-1.md)
 - Complete [Tutorial 2: Flow Matching](tutorial-2.md)
-- Understand conditional probability
+- Ideally complete [Tutorial 3](tutorial-3.md) and [Tutorial 4](tutorial-4.md)
 - Be comfortable with PyTorch
+- Have GPU access (recommended)
 
 ---
 
 ## Tentative Structure
 
-### Part 1: Conditional Generation
+### Part 1: Image Generation
 
-- Class-conditional diffusion
-- Text-to-image concepts
-- Conditioning mechanisms
+- MNIST digit generation
+- CIFAR-10 natural images
+- Face generation (CelebA)
+- Architecture considerations
 
-### Part 2: Classifier-Free Guidance
+### Part 2: Audio Synthesis
 
-- Mathematical framework
-- Implementation from scratch
-- Guidance scale tuning
+- Waveform generation
+- Spectrogram diffusion
+- Music generation
+- Quality metrics
 
-### Part 3: Latent Diffusion Models
+### Part 3: Molecular Design
 
-- VAE integration
-- Training in latent space
-- Decoding to pixel space
+- SMILES representation
+- 3D molecule generation
+- Property optimization
+- Drug discovery workflow
 
-### Part 4: Advanced Sampling
+### Part 4: Time Series
 
-- DDIM sampling (deterministic)
-- DPM-Solver (fast ODE)
-- Comparison of methods
+- Stock price generation
+- Sensor data synthesis
+- Forecasting with diffusion
+- Anomaly detection
 
-### Part 5: Applications
+### Part 5: Deployment
 
-- Image generation (MNIST, CIFAR-10)
-- Practical considerations
-- Scaling to larger datasets
+- Model optimization
+- Inference acceleration
+- Production considerations
+- API deployment
 
 ---
 
 ## How to Run (When Available)
 
-Similar to Tutorials 1 and 2:
-
 ### Option 1: Jupyter Notebook
 
 ```bash
-cd tutorial_3_advanced
+cd tutorial_5_applications
 source .venv/bin/activate
 jupyter lab
-# Open tutorial_notebook_Advanced.ipynb
+# Open tutorial_notebook_Applications.ipynb
 ```
 
 ### Option 2: Terminal/CLI
 
 ```bash
-cd tutorial_3_advanced
+cd tutorial_5_applications
 source .venv/bin/activate
-python -m advanced_tutorial.main
+python -m applications_tutorial.main --task=image_generation
 ```
 
 ---
@@ -101,38 +105,115 @@ python -m advanced_tutorial.main
 
 **Release:** TBD
 
-**Duration:** 2-3 hours
+**Duration:** 3-4 hours
 
 **Difficulty:** Advanced
 
 ---
 
-## Stay Updated
+## System Requirements
 
-Watch the [GitHub repository](https://github.com/yourusername/generative-tutorials) for updates on Tutorial 3 development.
+For Tutorial 5, you'll need:
+
+**Recommended:**
+- GPU with 8GB+ VRAM
+- 16GB+ RAM
+- 20GB+ disk space
+
+**Minimum:**
+- GPU with 4GB VRAM (or CPU)
+- 8GB RAM
+- 10GB disk space
 
 ---
 
-## In the Meantime
+## Datasets
 
-While waiting for Tutorial 3:
+This tutorial will use:
 
-1. Master Tutorials 1 and 2
-2. Read the papers on conditional generation:
-   - [Classifier-Free Diffusion Guidance](https://arxiv.org/abs/2207.12598)
-   - [High-Resolution Image Synthesis with Latent Diffusion](https://arxiv.org/abs/2112.10752)
-3. Experiment with conditional generation on your own
-4. Try scaling Tutorial 1/2 to image datasets
+- **MNIST**: Handwritten digits (60K images)
+- **CIFAR-10**: Natural images (60K images)
+- **CelebA**: Celebrity faces (202K images) [subset]
+- **ZINC**: Molecular structures (250K molecules) [subset]
+
+All datasets will be automatically downloaded.
+
+---
+
+## Example Applications
+
+### Image Generation
+
+```python
+# Train on MNIST
+python -m applications_tutorial.main \
+    --task=image \
+    --dataset=mnist \
+    --epochs=100
+
+# Generate samples
+python -m applications_tutorial.generate \
+    --checkpoint=mnist_checkpoint.pt \
+    --n_samples=100
+```
+
+### Audio Synthesis
+
+```python
+# Train on waveforms
+python -m applications_tutorial.main \
+    --task=audio \
+    --sample_rate=16000 \
+    --duration=2.0
+```
+
+### Molecular Design
+
+```python
+# Generate molecules
+python -m applications_tutorial.main \
+    --task=molecule \
+    --property=logP \
+    --target_value=3.5
+```
+
+---
+
+## Performance Benchmarks
+
+Expected performance on different hardware:
+
+| Task | CPU (i7) | GPU (RTX 3080) | GPU (A100) |
+|------|----------|----------------|------------|
+| MNIST Training | 30 min | 5 min | 2 min |
+| CIFAR-10 Training | 4 hours | 30 min | 15 min |
+| Sampling (100 images) | 5 min | 30 sec | 10 sec |
+
+---
+
+## Stay Updated
+
+Watch the [GitHub repository](https://github.com/yourusername/generative-tutorials) for updates on Tutorial 5 development.
+
+---
+
+## Recommended Reading
+
+Prepare for Tutorial 5 by reading:
+
+1. [Diffusion Models for Image Generation](https://arxiv.org/abs/2105.05233)
+2. [WaveGrad: Estimating Gradients for Waveform Generation](https://arxiv.org/abs/2009.00713)
+3. [Equivariant Diffusion for Molecule Generation](https://arxiv.org/abs/2203.17003)
 
 ---
 
 ## Contribute
 
-Interested in helping develop Tutorial 3? 
+Interested in helping develop Tutorial 5? 
 
-- Check the GitHub issues
-- Submit a pull request
-- Share your ideas
+- Share your application ideas
+- Contribute dataset loaders
+- Help with optimization techniques
 
 ---
 

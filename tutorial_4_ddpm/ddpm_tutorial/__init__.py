@@ -1,5 +1,5 @@
 """
-Tutorial 1: Building Your First Diffusion Model (DDPM on 2D Toy Data)
+Tutorial 4: DDPM on 2D Toy Data
 
 This package implements a complete denoising diffusion probabilistic model
 for 2D toy datasets, designed for educational purposes.

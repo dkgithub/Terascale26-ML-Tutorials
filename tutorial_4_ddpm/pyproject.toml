@@ -1,9 +1,9 @@
 [project]
 name = "ddpm-tutorial"
 version = "0.1.0"
-description = "Tutorial 1: Building Your First Diffusion Model (DDPM on 2D Toy Data)"
+description = "Tutorial 4: DDPM on 2D Toy Data"
 authors = [
-    {name = "Course Instructor", email = "instructor@university.edu"}
+    {name = "Stephen Jiggins", email = "stephen.jiggins@desy.de"}
 ]
 readme = "README.md"
 requires-python = ">=3.9"

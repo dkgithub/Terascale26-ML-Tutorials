@@ -14,7 +14,48 @@ This tutorial series covers the fundamentals of generative modeling, from classi
 
 ## Tutorials
 
-### Tutorial 1: Denoising Diffusion Probabilistic Models (DDPM)
+### Tutorial 1: PyTorch Polynomial Regression
+
+**Status:** Coming Soon
+
+Simple introduction to PyTorch pythonic coding style, learning how to fit a polynomial function to data using regression.
+
+**Planned Topics:**
+- Simple PyTorch training loop
+- Simple PyTorch `nn.` module for fitting polynomial `pytorch tensor parameters`
+- Feature processing
+
+[Coming Soon](tutorials/tutorial-1.md){ .md-button }
+
+---
+
+### Tutorial 2: Perceptron to DNN
+
+**Status:** Coming Soon
+
+Simple regression of polynomial functions using a universal approximator - i.e. the perceptron to Multi-layer Perceptron (MLP).
+
+**Planned Topics:**
+- Fit a polynomial function like in Tutorial 1, but not with a polynomial parameter based function, but a perceptron or MLP
+
+[Coming Soon](tutorials/tutorial-3.md){ .md-button }
+
+---
+
+### Tutorial 3: From DNNs to Transformers
+
+**Status:** Coming Soon
+
+Learning with the same polynomial data how to train and understand the strengths and weaknesses of DNNs, CNNs and transformers.
+
+**Planned Topics:**
+- Fit DNN/CNN/Transformer to polynomial time forcasted data
+
+[Coming Soon](tutorials/tutorial-3.md){ .md-button }
+
+---
+
+### Tutorial 4: Denoising Diffusion Probabilistic Models (DDPM)
 
 **Status:** Available
 
@@ -26,11 +67,11 @@ Learn the foundations of diffusion models by implementing DDPM from scratch.
 - Training a score-based model
 - Sampling with various schedulers
 
-[Start Tutorial 1](tutorials/tutorial-1.md){ .md-button .md-button--primary }
+[Start Tutorial 4](tutorials/tutorial-4.md){ .md-button .md-button--primary }
 
 ---
 
-### Tutorial 2: Flow Matching
+### Tutorial 5: Flow Matching
 
 **Status:** Available
 
@@ -42,52 +83,7 @@ Explore flow matching as an alternative to stochastic diffusion models.
 - ODE-based sampling
 - Comparison with DDPM
 
-[Start Tutorial 2](tutorials/tutorial-2.md){ .md-button .md-button--primary }
-
----
-
-### Tutorial 3: Advanced Topics
-
-**Status:** Coming Soon
-
-Dive deeper into advanced generative modeling techniques.
-
-**Planned Topics:**
-- Conditional generation
-- Classifier-free guidance
-- Latent diffusion models
-
-[Coming Soon](tutorials/tutorial-3.md){ .md-button }
-
----
-
-### Tutorial 4: Score-Based Models
-
-**Status:** Coming Soon
-
-Explore score-based generative modeling and SDEs.
-
-**Planned Topics:**
-- Score matching
-- Stochastic differential equations
-- Advanced sampling techniques
-
-[Coming Soon](tutorials/tutorial-4.md){ .md-button }
-
----
-
-### Tutorial 5: Applications
-
-**Status:** Coming Soon
-
-Apply generative models to real-world problems.
-
-**Planned Topics:**
-- Image generation
-- Audio synthesis
-- Molecular design
-
-[Coming Soon](tutorials/tutorial-5.md){ .md-button }
+[Start Tutorial 5](tutorials/tutorial-5.md){ .md-button .md-button--primary }
 
 ---
 
@@ -102,11 +98,11 @@ Apply generative models to real-world problems.
 
 ```mermaid
 graph LR
-    A[Setup Environment] --> B[Tutorial 1: DDPM]
-    B --> C[Tutorial 2: Flow Matching]
-    C --> D[Tutorial 3: Advanced Topics]
-    D --> E[Tutorial 4: Score-Based]
-    D --> F[Tutorial 5: Applications]
+    A[Setup Environment] --> B[Tutorial 1: PyTorch Polynomial Regression]
+    B --> C[Tutorial 2: Perceptron to DNN]
+    C --> D[Tutorial 3: From DNNs to Transformers]
+    D --> E[Tutorial 4: DDPM]
+    D --> F[Tutorial 5: Flow Matching]
 ```
 
 ## Prerequisites

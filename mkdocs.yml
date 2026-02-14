@@ -114,11 +114,12 @@ nav:
       - Installation: installation.md
       - Setup Guide: getting-started.md
   - Tutorials:
-      - Tutorial 1 - DDPM: tutorials/tutorial-1.md
-      - Tutorial 2 - Flow Matching: tutorials/tutorial-2.md
+      - Tutorial 1 - Coming Soon: tutorials/tutorial-1.md
+      - Tutorial 2 - Coming Soon: tutorials/tutorial-2.md
       - Tutorial 3 - Coming Soon: tutorials/tutorial-3.md
-      - Tutorial 4 - Coming Soon: tutorials/tutorial-4.md
-      - Tutorial 5 - Coming Soon: tutorials/tutorial-5.md
+      - Tutorial 4 - DDPM: tutorials/tutorial-4.md
+      - Tutorial 5 - Flow Matching: tutorials/tutorial-5.md
+
   - Resources:
       - FAQ: faq.md
       - Troubleshooting: troubleshooting.md

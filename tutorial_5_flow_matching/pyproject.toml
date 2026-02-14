@@ -1,0 +1,35 @@
+[project]
+name = "flow-matching-tutorial"
+version = "0.1.0"
+description = "Tutorial 2: Flow Matching - From SDEs to ODEs"
+authors = [
+    {name = "Course Instructor", email = "instructor@university.edu"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.10.0",
+    "tqdm>=4.65.0",
+    "jupyter>=1.0.0",
+    "torchdiffeq>=0.2.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel>=6.25.0",
+    "jupyterlab>=4.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["flow_matching_tutorial"]
+
+[project.scripts]
+flow-matching-tutorial = "flow_matching_tutorial.main:main"

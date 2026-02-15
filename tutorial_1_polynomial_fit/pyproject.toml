@@ -1,7 +1,7 @@
 [project]
 name = "polynomial-regression-tutorial"
 version = "0.1.0"
-description = "Add your description here"
+description = "Introduction to the PyTorch pythonic style"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

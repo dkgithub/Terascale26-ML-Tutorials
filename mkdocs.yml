@@ -116,7 +116,7 @@ nav:
   - Tutorials:
       - Tutorial 1 - Polynomial Fit: tutorials/tutorial-1.md
       - Tutorial 2 - Perceptron to DNN: tutorials/tutorial-2.md
-      - Tutorial 3 - Coming Soon: tutorials/tutorial-3.md
+      - Tutorial 3 - DNNs to Transformers: tutorials/tutorial-3.md
       - Tutorial 4 - DDPM: tutorials/tutorial-4.md
       - Tutorial 5 - Flow Matching: tutorials/tutorial-5.md
 

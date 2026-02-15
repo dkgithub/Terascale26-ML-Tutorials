@@ -1,28 +1,25 @@
-# Tutorial 1: Polynomial Regression & Bias-Variance Tradeoff
+# Tutorial 1: Polynomial Regression
 
-Learn the foundations of machine learning by implementing polynomial regression from scratch and understanding the critical bias-variance tradeoff.
+Learn the foundations of machine learning by implementing polynomial regression from scratch, using the typical `pythonic` style of PyTorch `nn.module`.
 
 ## Overview
 
-This tutorial provides a hands-on introduction to **polynomial regression with PyTorch**, demonstrating one of the most fundamental concepts in machine learning: the **bias-variance tradeoff**.
+This tutorial provides a hands-on introduction to **polynomial regression with PyTorch**.
 
-**Duration:** 90-120 minutes
+**Duration:** 30 minutes
 
-**Difficulty:** Beginner to Intermediate
+**Difficulty:** Beginner
 
 ---
 
 ## Learning Objectives
 
-By the end of this tutorial, you will:
+By the end of this tutorial, you will have been introduced to:
 
-- Understand PyTorch tensor operations and automatic differentiation
-- Learn to create custom model classes using `nn.Module`
+- PyTorch tensor operations
+- custom model classes using `nn.Module`
 - Implement forward passes and parameter optimization for arbitrary polynomial orders
 - Grasp the training loop structure and parameter evolution
-- **Visualize and understand the bias-variance tradeoff**
-- Recognize underfitting (high bias) and overfitting (high variance)
-- Learn when model complexity matches data complexity
 - Master feature normalization for numerical stability with high-order polynomials
 
 ---
@@ -51,7 +48,7 @@ The tutorial consists of:
 
 1. **Jupyter Notebook** - Interactive, step-by-step learning (`tutorial_poly_fit.ipynb`)
 2. **Python Scripts** - Modular, reusable code (`polynomial_tutorial/` package)
-3. **Visualizations** - Plots showing parameter evolution, fitted curves, and bias-variance scenarios
+3. **Visualizations** - Plots showing parameter evolution, and fitted curves
 4. **Documentation** - Comprehensive guides (README.md, this file)
 
 ---
@@ -166,29 +163,28 @@ polynomial_tutorial/
 **Key Files:**
 
 - **`LinearRegressor.py`**: Polynomial regression model
-  - `PolynomialRegressor`: Arbitrary nth-order polynomials
-  - `LinearRegressor`: Special case (order=1) for backward compatibility
-  - Learnable coefficients as `nn.Parameter`
-  - Forward pass with polynomial feature computation
+	- `PolynomialRegressor`: Arbitrary nth-order polynomials
+	- `LinearRegressor`: Special case (order=1) for backward compatibility
+	- Learnable coefficients as `nn.Parameter`
+	- Forward pass with polynomial feature computation
 
 - **`train.py`**: Complete training pipeline
-  - Training loop with gradient descent
-  - Parameter history tracking (for visualization)
-  - Model evaluation functions
-  - Professional logging
+	- Training loop with gradient descent
+	- Parameter history tracking (for visualization)
+	- Model evaluation functions
+	- Professional logging
 
 - **`utils.py`**: Feature normalization toolkit
-  - `FeatureNormalizer`: Prevents NaN for high-order polynomials
-  - Three normalization methods (symmetric, standardization, min-max)
-  - Fit, transform, inverse_transform operations
-  - Educational demonstrations
+	- `FeatureNormalizer`: Prevents NaN for high-order polynomials
+	- Three normalization methods (symmetric, standardization, min-max)
+	- Fit, transform, inverse_transform operations
+	- Educational demonstrations
 
 - **`main.py`**: Experiment orchestration
-  - Data generation with configurable noise
-  - Automatic normalization for orders > 2
-  - Training with parameter tracking
-  - Comprehensive visualizations
-  - Bias-variance scenario analysis
+	- Data generation with configurable noise
+	- Automatic normalization for orders > 2
+	- Training with parameter tracking
+	- Comprehensive visualizations
 
 ---
 
@@ -205,7 +201,6 @@ The Jupyter notebook is organized into 12 parts:
 - Experiment parameters
 - Data/model polynomial orders
 - Training hyperparameters
-- Understanding the three bias-variance scenarios
 
 ### Part 3: Data Generation
 - Creating polynomial data with noise
@@ -223,7 +218,6 @@ The Jupyter notebook is organized into 12 parts:
 - The `PolynomialRegressor` class
 - Learnable parameters
 - Forward pass implementation
-- Bias-variance scenario identification
 
 ### Part 6: Training
 - Standard gradient descent loop
@@ -248,7 +242,6 @@ The Jupyter notebook is organized into 12 parts:
 - Loss convergence curves
 
 ### Part 10: Understanding the Results
-- Interpreting the bias-variance scenario
 - What the metrics mean
 - When to be concerned
 
@@ -300,7 +293,53 @@ Shows each coefficient's trajectory toward its optimal value
 
 ## Key Concepts Covered
 
-### 1. The Bias-Variance Tradeoff
+### 1. Polynomial Regression
+
+Fitting functions of the form:
+
+$$y = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n$$
+
+**You will play around with:**
+- Arbitrary polynomial orders
+- Learnable coefficients as parameters
+- Polynomial feature computation
+- Efficient matrix multiplication approach
+
+### 2. Feature Normalization (CRITICAL!)
+
+When $x \in [0, 10]$, polynomial features explode:
+
+| Feature | Range | Problem |
+|---------|-------|---------|
+| $x^3$ | [0, 1000] | ️ Getting large |
+| $x^4$ | [0, 10,000] |  Very large |
+| $x^5$ | [0, 100,000] |  **NaN values!** |
+
+**Solution:** Normalize $x$ to $[-1, 1]$ **before** computing powers:
+- All $(x_{\text{norm}})^n$ stay bounded
+- Gradients remain stable
+- Training succeeds for any polynomial order
+
+**You will therefore learn to understand:**
+- When normalization is necessary
+- How to normalize properly
+- Denormalizing for interpretable plots
+- Professional ML practices
+
+### 3. Training with PyTorch
+
+Standard gradient descent optimization:
+
+$$\theta_{t+1} = \theta_t - \alpha \nabla L(\theta_t)$$
+
+**You will how parameters set and learned using:**
+- Creating `nn.Module` classes
+- Forward and backward passes
+- Automatic differentiation (autograd)
+- Parameter updates with optimizers
+- Tracking training history
+
+### 4. The Bias-Variance Tradeoff (Optional)
 
 The fundamental machine learning dilemma:
 
@@ -316,51 +355,6 @@ $$\text{Expected Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Er
 - Model just right → Balanced (optimal)
 - Model too complex → High Variance (overfitting)
 
-### 2. Polynomial Regression
-
-Fitting functions of the form:
-
-$$y = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n$$
-
-**You'll implement:**
-- Arbitrary polynomial orders
-- Learnable coefficients as parameters
-- Polynomial feature computation
-- Efficient matrix multiplication approach
-
-### 3. Feature Normalization (CRITICAL!)
-
-When $x \in [0, 10]$, polynomial features explode:
-
-| Feature | Range | Problem |
-|---------|-------|---------|
-| $x^3$ | [0, 1000] | ⚠️ Getting large |
-| $x^4$ | [0, 10,000] | 🚨 Very large |
-| $x^5$ | [0, 100,000] | 💥 **NaN values!** |
-
-**Solution:** Normalize $x$ to $[-1, 1]$ **before** computing powers:
-- All $(x_{\text{norm}})^n$ stay bounded
-- Gradients remain stable
-- Training succeeds for any polynomial order
-
-**You'll master:**
-- When normalization is necessary
-- How to normalize properly
-- Denormalizing for interpretable plots
-- Professional ML practices
-
-### 4. Training with PyTorch
-
-Standard gradient descent optimization:
-
-$$\theta_{t+1} = \theta_t - \alpha \nabla L(\theta_t)$$
-
-**You'll learn:**
-- Creating `nn.Module` classes
-- Forward and backward passes
-- Automatic differentiation (autograd)
-- Parameter updates with optimizers
-- Tracking training history
 
 ---
 
@@ -368,7 +362,7 @@ $$\theta_{t+1} = \theta_t - \alpha \nabla L(\theta_t)$$
 
 After completing the tutorial, try these experiments:
 
-### Easy (15-30 minutes each)
+### Easy (10 minutes each)
 
 1. **Underfitting Demo:**
    ```python
@@ -390,7 +384,7 @@ After completing the tutorial, try these experiments:
    ```
    **Question:** How does noise affect overfitting?
 
-### Medium (30-60 minutes each)
+### Medium (10 minutes each)
 
 4. **Sample Size Effect:**
    ```python
@@ -408,16 +402,16 @@ After completing the tutorial, try these experiments:
    - Try 'symmetric' vs 'standardize' vs 'minmax'
    - Which works best for polynomials?
 
-### Advanced (1-2 hours each)
+### Advanced (30 mins each)
 
 7. **Implement Cross-Validation:**
    - Split data into train/validation/test
    - Use validation to select optimal polynomial order
    - Implement k-fold cross-validation
 
-8. **Add L2 Regularization (Ridge Regression):**
+8. **Add L1 Regularization:**
    ```python
-   loss = mse + lambda_reg * torch.sum(model.coeffs ** 2)
+   loss = mse + lambda_reg * torch.abs(torch.sum(model.coeffs)) #L1
    ```
    - Prevents overfitting
    - Shrinks coefficients toward zero
@@ -507,12 +501,7 @@ For deeper understanding, refer to these resources:
 - **Deep Learning** (Goodfellow, Bengio, Courville)
   - Chapter 5: Machine Learning Basics
   - Section 5.4: Capacity, Overfitting, and Underfitting
-
-**Fundamental Papers:**
-
-- Geman et al. (1992): "Neural Networks and the Bias/Variance Dilemma"
-- Domingos (2000): "A Unified Bias-Variance Decomposition"
-
+  
 **Online Resources:**
 
 - [Bias-Variance Interactive Visualization](http://www.r2d3.us/visual-intro-to-machine-learning-part-2/)
@@ -574,6 +563,7 @@ regressor_poly_order = 3
 
 ---
 
+<!--
 ## Additional Resources
 
 ### Included Scripts
@@ -600,6 +590,7 @@ Shows feature ranges with/without normalization — great for understanding why 
 - `README.md` - Comprehensive project documentation
 
 ---
+-->
 
 ## Need Help?
 
@@ -643,15 +634,10 @@ Shows feature ranges with/without normalization — great for understanding why 
 
 This tutorial teaches:
 
-✅ Polynomial regression from scratch with PyTorch  
-✅ The fundamental bias-variance tradeoff  
-✅ Feature normalization for numerical stability  
-✅ Professional ML coding practices  
-✅ How to visualize and interpret model behavior  
-✅ When simple is too simple and complex is too complex  
+- Polynomial regression from scratch with PyTorch
+- Feature normalization for numerical stability
+- Professional ML coding practices
+- How to visualize and interpret model behavior
+- When simple is too simple and complex is too complex
 
-**Key Insight:** The goal is NOT to minimize training loss, but to build models that **generalize to new data**!
-
-**Remember:** Low training loss can indicate overfitting. The sweet spot is where bias and variance are balanced.
-
-Happy learning! 🚀
+Happy learning!

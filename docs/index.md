@@ -91,9 +91,8 @@ Explore flow matching as an alternative to stochastic diffusion models.
 ## Quick Start
 
 !!! tip "New to these tutorials?"
-    1. Start with [Installation](installation.md) to set up your environment
-    2. Follow the [Getting Started](getting-started.md) guide to clone and configure
-    3. Begin with [Tutorial 1](tutorials/tutorial-1.md) for foundations
+    1. Follow the [Getting Started](getting-started.md) guide to clone and configure
+    2. Begin with [Tutorial 1](tutorials/tutorial-1.md) for foundations
 
 ## Learning Path
 
@@ -160,4 +159,4 @@ These tutorials are designed for educational purposes and draw inspiration from 
 
 ---
 
-Ready to start? Head to [Installation](installation.md) to set up your environment!
+Ready to start? Head to [Getting Started](getting-started.md) to set up your environment!

@@ -51,7 +51,6 @@ By the end of this tutorial, you will:
 
 **Required Setup:**
 
-- Complete [Installation Guide](../installation.md)
 - Complete [Getting Started Guide](../getting-started.md)
 - GPU recommended but not required (CPU optimizations included)
 

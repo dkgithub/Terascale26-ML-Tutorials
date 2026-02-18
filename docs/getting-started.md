@@ -2,13 +2,6 @@
 
 This guide will walk you through cloning the repository and setting up your environment to run the tutorials.
 
-!!! warning "Prerequisites"
-    Before starting, ensure you've completed the [Installation Guide](installation.md) to install:
-    
-    - astral-uv
-    - Jupyter Notebook/Lab
-    - ipykernel
-
 ---
 
 ## Step 1: Clone the Repository
@@ -18,23 +11,29 @@ First, clone the tutorial repository to your local machine.
 === "HTTPS"
 
     ```bash
-    git clone https://github.com/yourusername/generative-tutorials.git
-    cd generative-tutorials
+    git clone https://github.com/sjiggins/Terascale26-ML-Tutorials.git
+    cd Terascale26-ML-Tutorials
     ```
 
 === "SSH"
 
     ```bash
-    git clone git@github.com:yourusername/generative-tutorials.git
-    cd generative-tutorials
+    git clone git@github.com:sjiggins/Terascale26-ML-Tutorials.git
+    cd Terascale26-ML-Tutorials
     ```
 
 === "GitHub CLI"
 
     ```bash
-    gh repo clone yourusername/generative-tutorials
+	gh repo clone sjiggins/Terascale26-ML-Tutorials
     cd generative-tutorials
     ```
+
+The relocate to the root directory of the repository:
+
+```bash
+cd Terascale26-ML-Tutorials
+```
 
 ---
 
@@ -45,25 +44,165 @@ You can run the tutorials using either:
 1. **astral-uv** (Recommended) - Modern, fast package manager
 2. **Traditional pip** - Classic Python package management
 
-Choose the method that works best for you.
+Choose the method that works best for you, however astrl-uv is significantly faster. It is likely that you do not have astral-uv installed on your laptop, or the NAF school account. To check this please run:
 
----
+=== "Linux"
+	```bash
+	uv --version
+	```
+
+=== "macOS"
+	```bash
+	uv --version
+	```
+	
+=== "Windows"
+    ```powershell
+    uv --version
+    ```
+
+If the command returns something like:
+
+```bash
+Command 'uv' not found, did you mean:
+...
+...
+```
+
+Then you will need to follow the installation process below.
+
+
+### Install astral-uv
+
+astral-uv is a fast Python package installer and resolver written in Rust. It's significantly faster than pip and conda.
+
+=== "Linux"
+
+    **Method 1: Using the install script (Recommended)**
+    
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+    
+    **Method 2: Using pip**
+    
+    ```bash
+    pip install uv
+    ```
+    
+    **Verify installation:**
+    
+    ```bash
+    uv --version
+    ```
+    
+    **Add to PATH (if needed):**
+    
+    The installer should automatically add uv to your PATH. If not, add this to your `~/.bashrc` or `~/.zshrc`:
+    
+    ```bash
+    export PATH=""$HOME/.local/bin:$PATH"
+    ```
+    
+    Then reload your shell:
+    
+    ```bash
+    source ~/.bashrc  # or source ~/.zshrc
+    ```
+
+=== "macOS"
+
+    **Method 1: Using the install script (Recommended)**
+    
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+    
+    **Method 2: Using Homebrew**
+    
+    ```bash
+    brew install uv
+    ```
+    
+    **Method 3: Using pip**
+    
+    ```bash
+    pip install uv
+    ```
+    
+    **Verify installation:**
+    
+    ```bash
+    uv --version
+    ```
+    
+    **Add to PATH (if needed):**
+    
+    The installer should automatically add uv to your PATH. If not, add this to your `~/.zshrc` or `~/.bash_profile`:
+    
+    ```bash
+    export PATH=""$HOME/.local/bin:$PATH"
+    ```
+    
+    Then reload your shell:
+    
+    ```bash
+    source ~/.zshrc  # or source ~/.bash_profile
+    ```
+
+=== "Windows"
+
+    **Method 1: Using PowerShell (Recommended)**
+    
+    Open PowerShell as Administrator and run:
+    
+    ```powershell
+    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+    ```
+    
+    **Method 2: Using pip**
+    
+    ```powershell
+    pip install uv
+    ```
+    
+    **Method 3: Using winget**
+    
+    ```powershell
+    winget install --id=astral-sh.uv -e
+    ```
+    
+    **Verify installation:**
+    
+    ```powershell
+    uv --version
+    ```
+    
+    **Add to PATH (if needed):**
+    
+    The installer should automatically add uv to your PATH. If not:
+    
+    1. Press `Win + X` and select "System"
+    2. Click "Advanced system settings"
+    3. Click "Environment Variables"
+    4. Under "User variables", find "Path" and click "Edit"
+    5. Add: `C:\Users\<YourUsername>\.cargo\bin`
+    6. Click OK and restart your terminal
+
+!!! tip "Why astral-uv?"
+    - **Fast**: 10-100x faster than pip
+    - **Reliable**: Deterministic dependency resolution
+    - **Compatible**: Works with existing pip ecosystem
+    - **Modern**: Built with Rust for performance
+
 
 ## Method 1: Setup with astral-uv (Recommended)
 
-astral-uv is faster and more reliable than traditional pip.
-
-### Navigate to a Tutorial
-
-Each tutorial is in its own directory:
-
-```bash
-cd tutorial_1_ddpm        # For Tutorial 1
-# OR
-cd tutorial_2_flow_matching   # For Tutorial 2
-```
-
 ### Create Virtual Environment
+Inside the root directory of the tutorial repository exists a two files:
+```bash
+
+```
 
 ```bash
 uv venv .venv
@@ -91,17 +230,22 @@ uv venv .venv
 
 ### Install Dependencies
 
-Each tutorial has a `pyproject.toml` file that defines its dependencies.
+Each tutorial has a `pyproject.toml` file that defines its dependencies. You can run the pip installation via two methods:
 
-```bash
-# Install from pyproject.toml
-uv pip install -e .
+=== "astral-uv"
 
-# OR install directly
-uv pip install torch torchvision torchaudio numpy matplotlib tqdm
-```
+	```bash
+	# Install from pyproject.toml
+	uv pip install -e .
+	```
+=== "pip"
+
+	```
+	pip install -r requirements.txt
+	```
 
 ### Register Jupyter Kernel
+Now that you have a virtual environment setup for your 
 
 ```bash
 uv pip install ipykernel
@@ -125,8 +269,6 @@ If you prefer traditional pip, you can use it instead.
 
 ```bash
 cd tutorial_1_ddpm        # For Tutorial 1
-# OR
-cd tutorial_2_flow_matching   # For Tutorial 2
 ```
 
 ### Create Virtual Environment

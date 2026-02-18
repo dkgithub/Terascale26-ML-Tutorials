@@ -70,3 +70,10 @@
   text-align: center;
   margin: 1em 0;
 }
+
+/* disabled buttong for webpage*/
+.md-button--disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}

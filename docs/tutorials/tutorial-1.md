@@ -36,7 +36,6 @@ By the end of this tutorial, you will have been introduced to:
 
 **Required Setup:**
 
-- Complete [Installation Guide](../installation.md)
 - Complete [Getting Started Guide](../getting-started.md)
 - Python 3.8+ with PyTorch, matplotlib, numpy
 

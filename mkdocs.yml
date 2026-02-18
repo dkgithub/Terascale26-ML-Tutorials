@@ -111,7 +111,7 @@ extra_css:
 nav:
   - Home: index.md
   - Getting Started:
-      - Installation: installation.md
+#      - Installation: installation.md
       - Setup Guide: getting-started.md
   - Tutorials:
       - Tutorial 1 - Polynomial Fit: tutorials/tutorial-1.md

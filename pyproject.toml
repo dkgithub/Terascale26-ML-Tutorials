@@ -1,0 +1,35 @@
+[project]
+name = "terascale26-ml-tutorial"
+version = "0.1.0"
+description = "Machine Learning tutorials for Terascale 2026 Statistics School"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+
+dependencies = [
+    "ipykernel>=6.0",
+    "jupyter>=1.0",
+    "jupyterlab>=4.0",
+    "matplotlib>=3.7",
+    "notebook>=7.0",
+    "numpy>=1.26",
+    "torch>=2.2",
+    "tqdm>=4.66",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "torchdiffeq>=0.2.3",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "polynomial_tutorial",
+    "perceptron_to_DNN_tutorial",
+    "DNNs_to_Transformer_tutorial",
+    "ddpm_tutorial",
+    "flow_matching_tutorial",
+]
+

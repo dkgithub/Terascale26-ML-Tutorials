@@ -36,7 +36,6 @@ By the end of this tutorial, you will have been introduced to:
 
 **Required Setup:**
 
-- Complete [Installation Guide](../installation.md)
 - Complete [Getting Started Guide](../getting-started.md)
 - Python 3.8+ with PyTorch, matplotlib, numpy
 
@@ -69,10 +68,24 @@ You have **two options** for running this tutorial:
    ```
 
 2. Activate your virtual environment:
-   ```bash
-   source .venv/bin/activate  # Linux/macOS
-   .venv\Scripts\Activate.ps1  # Windows
-   ```
+
+	=== "Linux / macOS"
+	
+	    ```bash
+	    source ../.venv/bin/activate
+	    ```
+	
+	=== "Windows (PowerShell)"
+	
+	    ```powershell
+	    ../.venv\Scripts\Activate.ps1
+	    ```
+		
+	=== "Windows (Command Prompt)"
+	
+	    ```cmd
+	    ../.venv\Scripts\activate.bat
+	    ```
 
 3. Start Jupyter:
    ```bash
@@ -112,10 +125,24 @@ You have **two options** for running this tutorial:
    ```
 
 2. Activate your virtual environment:
-   ```bash
-   source .venv/bin/activate  # Linux/macOS
-   .venv\Scripts\Activate.ps1  # Windows
-   ```
+
+	=== "Linux / macOS"
+	
+	    ```bash
+	    source ../.venv/bin/activate
+	    ```
+	
+	=== "Windows (PowerShell)"
+	
+	    ```powershell
+	    ../.venv\Scripts\Activate.ps1
+	    ```
+		
+	=== "Windows (Command Prompt)"
+	
+	    ```cmd
+	    ../.venv\Scripts\activate.bat
+	    ```
 
 3. Run the main script:
    ```bash

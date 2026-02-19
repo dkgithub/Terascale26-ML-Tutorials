@@ -37,7 +37,6 @@ By the end of this tutorial, you will:
 
 **Required Setup:**
 
-- Complete [Installation Guide](../installation.md)
 - Complete [Getting Started Guide](../getting-started.md)
 - Recommended: Complete [Tutorial 1: Polynomial Fitting](tutorial-1.md)
 

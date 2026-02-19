@@ -30,12 +30,6 @@ astral-uv is a fast Python package installer and resolver written in Rust. It's 
     pip install uv
     ```
     
-    **Method 3: Using cargo (if you have Rust installed)**
-    
-    ```bash
-    cargo install --git https://github.com/astral-sh/uv uv
-    ```
-    
     **Verify installation:**
     
     ```bash
@@ -47,7 +41,7 @@ astral-uv is a fast Python package installer and resolver written in Rust. It's 
     The installer should automatically add uv to your PATH. If not, add this to your `~/.bashrc` or `~/.zshrc`:
     
     ```bash
-    export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH=""$HOME/.local/bin:$PATH"
     ```
     
     Then reload your shell:
@@ -87,7 +81,7 @@ astral-uv is a fast Python package installer and resolver written in Rust. It's 
     The installer should automatically add uv to your PATH. If not, add this to your `~/.zshrc` or `~/.bash_profile`:
     
     ```bash
-    export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH=""$HOME/.local/bin:$PATH"
     ```
     
     Then reload your shell:

@@ -195,303 +195,249 @@ astral-uv is a fast Python package installer and resolver written in Rust. It's 
     - **Compatible**: Works with existing pip ecosystem
     - **Modern**: Built with Rust for performance
 
+## Setting up Virtual Environment 
 
-## Method 1: Setup with astral-uv (Recommended)
+=== "Method 1: Astral-UV (Recommended)"
 
-### Create Virtual Environment
-Inside the root directory of the tutorial repository exists a two files:
-```bash
-
-```
-
-```bash
-uv venv .venv
-```
-
-### Activate the Environment
-
-=== "Linux / macOS"
-
-    ```bash
-    source .venv/bin/activate
-    ```
-
-=== "Windows (PowerShell)"
-
-    ```powershell
-    .venv\Scripts\Activate.ps1
-    ```
-
-=== "Windows (Command Prompt)"
-
-    ```cmd
-    .venv\Scripts\activate.bat
-    ```
-
-### Install Dependencies
-
-Each tutorial has a `pyproject.toml` file that defines its dependencies. You can run the pip installation via two methods:
-
-=== "astral-uv"
-
+	### Create Virtual Environment
+	To create the virtual environment with astral-uv, simply run:
+	```bash
+	uv venv .venv
+	```
+	
+	### Activate the Environment
+	
+	=== "Linux / macOS"
+	
+	    ```bash
+	    source .venv/bin/activate
+	    ```
+	
+	=== "Windows (PowerShell)"
+	
+	    ```powershell
+	    .venv\Scripts\Activate.ps1
+	    ```
+	
+	=== "Windows (Command Prompt)"
+	
+	    ```cmd
+	    .venv\Scripts\activate.bat
+	    ```
+	
+	### Install Dependencies
+	
+	To install the dependencies needed for this tutorial, please use the following command:
+	
 	```bash
 	# Install from pyproject.toml
-	uv pip install -e .
+	uv sync 
 	```
-=== "pip"
-
+	
+	This will looking inside the central `pyproject.toml` file to find all dependencies and then install them in the `.venv` virtual environment.
+	
+	### Register Jupyter Kernel
+	Now that you have a virtual environment setup, we need to declare the virtual environment to any jupyter(hub/lab/notebook) we start when using these tutorials. To do this, run the following:
+	
+	```bash
+	uv pip install ipykernel
+	python -m ipykernel install --user --name=tutorial-env --display-name="Tutorial Environment"
 	```
-	pip install -r requirements.txt
+	
+	### Verify Installation
+	
+	```bash
+	python -c "import torch; print(torch.__version__)"
+	jupyter kernelspec list
+	```
+	
+	---
+
+=== "Method 2: Traditional pip"
+	
+	### Create Virtual Environment
+	
+	```bash
+	python -m venv .venv
+	```
+	
+	### Activate the Environment
+	
+	=== "Linux / macOS"
+	
+	    ```bash
+	    source .venv/bin/activate
+	    ```
+	
+	=== "Windows (PowerShell)"
+	
+	    ```powershell
+	    .venv\Scripts\Activate.ps1
+	    ```
+	
+	=== "Windows (Command Prompt)"
+	
+	    ```cmd
+	    .venv\Scripts\activate.bat
+	    ```
+	
+	### Install Dependencies
+	
+	=== "pyproject.toml"
+		```bash
+		# Install from pyproject.toml
+		pip install -e .
+		```
+		
+	=== "requirements.txt"
+		```bash
+		# Install via requirements
+		pip install -r requirements.txt
+		```
+	
+	
+	### Register Jupyter Kernel
+	
+	```bash
+	pip install ipykernel
+	python -m ipykernel install --user --name=tutorial-env --display-name="Tutorial Environment"
+	```
+	
+	### Verify Installation
+	
+	```bash
+	python -c "import torch; print(torch.__version__)"
+	jupyter kernelspec list
 	```
 
-### Register Jupyter Kernel
-Now that you have a virtual environment setup for your 
-
-```bash
-uv pip install ipykernel
-python -m ipykernel install --user --name=tutorial-env --display-name="Tutorial Environment"
-```
-
-### Verify Installation
-
-```bash
-python -c "import torch; print(torch.__version__)"
-jupyter kernelspec list
-```
-
----
-
-## Method 2: Setup with Traditional pip
-
-If you prefer traditional pip, you can use it instead.
-
-### Navigate to a Tutorial
-
-```bash
-cd tutorial_1_ddpm        # For Tutorial 1
-```
-
-### Create Virtual Environment
-
-```bash
-python -m venv .venv
-```
-
-### Activate the Environment
-
-=== "Linux / macOS"
-
-    ```bash
-    source .venv/bin/activate
-    ```
-
-=== "Windows (PowerShell)"
-
-    ```powershell
-    .venv\Scripts\Activate.ps1
-    ```
-
-=== "Windows (Command Prompt)"
-
-    ```cmd
-    .venv\Scripts\activate.bat
-    ```
-
-### Install Dependencies
-
-```bash
-# Install from pyproject.toml
-pip install -e .
-
-# OR install directly
-pip install torch torchvision torchaudio numpy matplotlib tqdm
-```
-
-### Register Jupyter Kernel
-
-```bash
-pip install ipykernel
-python -m ipykernel install --user --name=tutorial-env --display-name="Tutorial Environment"
-```
-
-### Verify Installation
-
-```bash
-python -c "import torch; print(torch.__version__)"
-jupyter kernelspec list
-```
-
----
 
 ## Step 3: Running the Tutorials
 
 You have two options for running the tutorials:
 
-### Option A: Run in Terminal (CLI)
+- Command Line (in terminal)
+- Jupyter Notebook/Lab
 
-Each tutorial can be run as a Python script:
-
-```bash
-# Make sure your virtual environment is activated
-source .venv/bin/activate  # Linux/macOS
-# OR
-.venv\Scripts\Activate.ps1  # Windows
-
-# Run the main script
-python -m flow_matching_tutorial.main
-
-# OR run directly
-python flow_matching_tutorial/main.py
-```
-
-**Outputs will be saved to the `outputs/` directory.**
-
-### Option B: Run in Jupyter Notebook/Lab
-
-**Start Jupyter:**
+In either of these two cases, you need to enter the sub-directory of each tutorial:
 
 ```bash
-# Start Jupyter Notebook
-jupyter notebook
-
-# OR start JupyterLab
-jupyter lab
+    ├── tutorial_1_polynomial_fit
+    ├── tutorial_2_perceptron-to-DNN
+    ├── tutorial_3_from_DNNs_to_Transformers
+    ├── tutorial_4_ddpm
+    ├── tutorial_5_flow_matching
 ```
 
-**Open the tutorial notebook:**
+Once inside this directory, you are ready to go! To start the tutorial please see the tutorial specific pages:
 
-1. Navigate to the tutorial directory in Jupyter
-2. Open `tutorial_notebook_Flow.ipynb` (or the appropriate notebook)
-3. Select the "Tutorial Environment" kernel from the kernel menu
-4. Run the cells!
+- [Tutorial 1: Polynomial Fit](tutorials/tutorial-1.md) - Start with a basic polnomial fit using PyTorch `nn.module` structure
 
-### Option C: Run in VSCode
+For a complete overview of the tutorial see the repository structure below.
 
-1. Open VSCode in the repository directory:
-   ```bash
-   code .
-   ```
+### Repository Structure
 
-2. Open the notebook file (e.g., `tutorial_2_flow_matching/tutorial_notebook_Flow.ipynb`)
+```
+└── Terascale26-ML-Tutorials
+    ├── docs      # markdown documentation that you are reading right now
+    ├── LICENSE
+    ├── mkdocs.yml
+    ├── pyproject.toml
+    ├── README.md
+    ├── requirements.txt
+    ├── tutorial_1_polynomial_fit
+    │   ├── polynomial_tutorial
+    │   │   ├── __init__.py
+    │   │   ├── LinearRegressor.py
+    │   │   ├── logger.py
+    │   │   ├── loss.py
+    │   │   ├── main.py
+    │   │   ├── train.py
+    │   │   └── utils.py
+    │   ├── pyproject.toml
+    │   └── tutorial_poly_fit.ipynb
+    ├── tutorial_2_perceptron-to-DNN
+    │   ├── perceptron_to_DNN_tutorial
+    │   │   ├── __init__.py
+    │   │   ├── logger.py
+    │   │   ├── loss.py
+    │   │   ├── main.py
+    │   │   ├── MultiLayerPerceptron.py
+    │   │   ├── plotting.py
+    │   │   ├── train.py
+    │   │   └── utils.py
+    │   ├── pyproject.toml
+    │   └── tutorial_DNN.ipynb
+    ├── tutorial_3_from_DNNs_to_Transformers
+    │   ├── DNNs_to_Transformer_tutorial
+    │   │   ├── CNN_AR.py
+    │   │   ├── CNN_AR_v2.py
+    │   │   ├── data_generator_multiscale.py
+    │   │   ├── data_generator.py
+    │   │   ├── logger.py
+    │   │   ├── loss.py
+    │   │   ├── main.py
+    │   │   ├── MultiLayerPerceptron_AR.py
+    │   │   ├── plotting.py
+    │   │   ├── Transformer_AR.py
+    │   │   └── utils.py
+    │   ├── pyproject.toml
+    │   └── tutorial_DNN_to_Transformer.ipynb
+    ├── tutorial_4_ddpm
+    │   ├── ddpm_tutorial
+    │   │   ├── diffusion.py
+    │   │   ├── __init__.py
+    │   │   ├── main.py
+    │   │   ├── models.py
+    │   │   ├── utils.py
+    │   │   └── visualization.py
+    │   ├── pyproject.toml
+    │   └── tutorial_notebook.ipynb
+    ├── tutorial_5_flow_matching
+    │   ├── flow_matching_tutorial
+    │   │   ├── flow-NAFjupytertests.py
+    │   │   ├── flow.py
+    │   │   ├── flow_solutions.py
+    │   │   ├── __init__.py
+    │   │   ├── main.py
+    │   │   ├── models.py
+    │   │   ├── utils.py
+    │   │   └── visualization.py
+    │   ├── pyproject.toml
+    │   └── tutorial_notebook_Flow.ipynb
+```
 
-3. Click on the kernel selector in the top-right corner
+## Next Steps
 
-4. Select "Tutorial Environment"
+Now that you're set up, choose a tutorial to start:
 
-5. Run the cells using the run button or `Shift+Enter`
-
-!!! tip "Recommended Workflow"
-    - **Learning**: Use Jupyter Notebook/Lab for interactive exploration
-    - **Experimentation**: Use VSCode for code editing and debugging
-    - **Automation**: Use CLI scripts for batch processing
+- [Tutorial 1: Polynomial Fit](tutorials/tutorial-1.md) - Start with a basic polnomial fit using PyTorch `nn.module` structure
 
 ---
 
-## Repository Structure
 
-Here's an overview of the repository structure:
-
-```
-generative-tutorials/
-├── docs/                      # Documentation (this website)
-├── tutorial_1_ddpm/          # Tutorial 1: DDPM
-│   ├── ddpm_tutorial/        # Python package
-│   │   ├── __init__.py
-│   │   ├── main.py
-│   │   ├── models.py
-│   │   ├── diffusion.py
-│   │   ├── utils.py
-│   │   └── visualization.py
-│   ├── outputs/              # Generated outputs
-│   ├── pyproject.toml        # Dependencies
-│   └── tutorial_notebook_DDPM.ipynb
-│
-├── tutorial_2_flow_matching/ # Tutorial 2: Flow Matching
-│   ├── flow_matching_tutorial/
-│   │   ├── __init__.py
-│   │   ├── main.py
-│   │   ├── models.py
-│   │   ├── flow.py
-│   │   ├── flow_solutions.py
-│   │   ├── utils.py
-│   │   └── visualization.py
-│   ├── outputs/              # Generated outputs
-│   ├── pyproject.toml
-│   └── tutorial_notebook_Flow.ipynb
-│
-├── tutorial_3_advanced/      # Tutorial 3 (Coming Soon)
-├── tutorial_4_score_based/   # Tutorial 4 (Coming Soon)
-├── tutorial_5_applications/  # Tutorial 5 (Coming Soon)
-├── mkdocs.yml                # Documentation config
-├── README.md
-└── LICENSE
-```
-
----
-
-## Running Multiple Tutorials
-
-Each tutorial has its own virtual environment and kernel. To run multiple tutorials:
-
-**Setup Tutorial 1:**
-
-```bash
-cd tutorial_1_ddpm
-uv venv .venv
-source .venv/bin/activate
-uv pip install -e .
-python -m ipykernel install --user --name=tutorial1 --display-name="Tutorial 1 - DDPM"
-```
-
-**Setup Tutorial 2:**
-
-```bash
-cd ../tutorial_2_flow_matching
-uv venv .venv
-source .venv/bin/activate
-uv pip install -e .
-python -m ipykernel install --user --name=tutorial2 --display-name="Tutorial 2 - Flow Matching"
-```
-
-**Now you can switch between kernels in Jupyter!**
-
----
-
+<details markdown="1">
+<summary>Optional Reading - see for quick reference, FAQs, etc...</summary>
 ## Common Workflows
 
 ### Daily Workflow
 
 ```bash
 # Activate environment
-cd tutorial_2_flow_matching
 source .venv/bin/activate
+cd tutorial_1_polynomial_fit   # Or replace with another sub-directory
 
 # Pull latest changes
 git pull
 
 # Start Jupyter
 jupyter lab
+# OR
+jupyter notebook
 
 # Work on notebooks...
 
 # Deactivate when done
 deactivate
-```
-
-### Running Experiments
-
-```bash
-# Activate environment
-source .venv/bin/activate
-
-# Modify config in main.py
-nano flow_matching_tutorial/main.py
-
-# Run experiment
-python -m flow_matching_tutorial.main
-
-# Check outputs
-ls outputs/
 ```
 
 ### Updating Dependencies
@@ -542,15 +488,6 @@ print(f"CUDA device: {torch.cuda.get_device_name(0)}")
 
 ---
 
-## Next Steps
-
-Now that you're set up, choose a tutorial to start:
-
-- [Tutorial 1: DDPM](tutorials/tutorial-1.md) - Start with diffusion models
-- [Tutorial 2: Flow Matching](tutorials/tutorial-2.md) - Learn ODE-based generation
-
----
-
 ## Quick Reference
 
 **Activate environment:**
@@ -563,7 +500,7 @@ source .venv/bin/activate  # Linux/macOS
 **Run notebook:**
 
 ```bash
-jupyter lab
+jupyter notebook
 ```
 
 **Run CLI:**
@@ -616,3 +553,5 @@ python -m ipykernel install --user --name=tutorial-env --display-name="Tutorial 
 **Solution:** Use CPU instead or reduce batch size in config
 
 For more help, see [Troubleshooting](troubleshooting.md).
+
+</details>
